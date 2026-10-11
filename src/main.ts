@@ -11,7 +11,7 @@ app.get('/', (req: Request, res: Response) => {
 // create user
 app.post('/api/create', async (req: Request, res: Response) => {
   try {
-    const { name, email } = req.body;
+    const { name, email, username } = req.body;
 
     // validation
     if (!name || !email) {
@@ -24,6 +24,7 @@ app.post('/api/create', async (req: Request, res: Response) => {
     const user = await db.orm.public.User.create({
       name,
       email,
+      username: username ?? null,
     });
 
     // success response
@@ -33,9 +34,8 @@ app.post('/api/create', async (req: Request, res: Response) => {
       data: user,
     });
   } catch (error) {
-    res
-      .status(500)
-      .json({ success: false, message: 'Internal server error', error });
+    console.error(error);
+    res.status(500).json({ success: false, message: 'Internal server error' });
   }
 });
 
