@@ -39,6 +39,18 @@ app.post('/api/create', async (req: Request, res: Response) => {
   }
 });
 
+// get user
+app.get('/api/users', async (req: Request, res: Response) => {
+  try {
+    const users = await db.orm.public.User.all();
+    // success res
+    res.status(200).json({ data: users });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: 'Internal server error' });
+  }
+});
+
 app.listen(3000, () => {
   console.log(`Server is running on port:${3000}`);
 });
