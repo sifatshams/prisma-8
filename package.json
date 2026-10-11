@@ -1,0 +1,26 @@
+{
+  "name": "prisma-8",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "contract:emit": "prisma contract emit"
+  },
+  "keywords": [],
+  "author": "Sifat Bin Anwar",
+  "license": "ISC",
+  "packageManager": "pnpm@12.11.2",
+  "type": "module",
+  "dependencies": {
+    "@prisma/orm-postgres": "8.0.0-rc.17",
+    "dotenv": "^18.0.7"
+  },
+  "devDependencies": {
+    "@prisma/cli-engine": "^0.7.0",
+    "@types/node": "^26.6.5",
+    "prisma": "8.0.0-rc.22",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
