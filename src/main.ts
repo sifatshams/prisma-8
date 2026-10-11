@@ -9,7 +9,7 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 // create user
-app.post('/', async (req: Request, res: Response) => {
+app.post('/api/create', async (req: Request, res: Response) => {
   try {
     const { name, email } = req.body;
 
@@ -27,13 +27,11 @@ app.post('/', async (req: Request, res: Response) => {
     });
 
     // success response
-    res
-      .status(201)
-      .json({
-        success: true,
-        message: 'User created successfully',
-        data: user,
-      });
+    res.status(201).json({
+      success: true,
+      message: 'User created successfully',
+      data: user,
+    });
   } catch (error) {
     res
       .status(500)
