@@ -51,6 +51,19 @@ app.get('/api/users', async (req: Request, res: Response) => {
   }
 });
 
+// filtering
+app.get('/api/filter', async (req: Request, res: Response) => {
+  try {
+    const filterUser = await db.orm.public.User.where({ name: 'sifat' }).all();
+
+    // success res
+    res.status(200).json({ filterUser });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: 'Internal server error' });
+  }
+});
+
 // update user
 app.patch('/api/update/:id', async (req: Request, res: Response) => {
   try {
